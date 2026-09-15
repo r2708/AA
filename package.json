@@ -1,0 +1,1403 @@
+{
+  "name": "codepilot",
+  "displayName": "CodePilot",
+  "description": "Context-aware coding shortcuts: CodePilot analyzes your code (language, AST, scope, selection, imports) before generating or transforming it.",
+  "version": "0.1.0",
+  "publisher": "codepilot-dev",
+  "license": "MIT",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/codepilot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/codepilot/issues"
+  },
+  "engines": {
+    "vscode": "^1.85.0",
+    "node": ">=18"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
+  "keywords": [
+    "typescript",
+    "javascript",
+    "react",
+    "refactoring",
+    "code generation",
+    "shortcuts"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "codepilot.createFunction",
+        "title": "Create Function",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createVariable",
+        "title": "Create Variable",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createConstant",
+        "title": "Create Constant",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createClass",
+        "title": "Create Class",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createInterface",
+        "title": "Create Interface",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createType",
+        "title": "Create Type",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createEnum",
+        "title": "Create Enum",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createObject",
+        "title": "Create Object",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createArray",
+        "title": "Create Array",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createConstructor",
+        "title": "Create Constructor",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createMethod",
+        "title": "Create Method",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createProperty",
+        "title": "Create Property",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createIfElse",
+        "title": "Create If / Else",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createSwitch",
+        "title": "Create Switch",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createForLoop",
+        "title": "Create For Loop",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createForOf",
+        "title": "Create For...Of",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createForIn",
+        "title": "Create For...In",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createWhile",
+        "title": "Create While Loop",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createDoWhile",
+        "title": "Create Do...While",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createTryCatch",
+        "title": "Create Try / Catch",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createTryCatchFinally",
+        "title": "Create Try / Catch / Finally",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createThrowError",
+        "title": "Create Throw Error",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createReturn",
+        "title": "Create Return",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createTernary",
+        "title": "Create Ternary",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createImport",
+        "title": "Create Import",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createNamedImport",
+        "title": "Create Named Import",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createDefaultImport",
+        "title": "Create Default Import",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createExport",
+        "title": "Create Export",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createDefaultExport",
+        "title": "Create Default Export",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createReExport",
+        "title": "Create Re-export",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createDestructuring",
+        "title": "Create Destructuring",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createSpread",
+        "title": "Create Spread",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createOptionalChaining",
+        "title": "Create Optional Chaining",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createNullishCoalescing",
+        "title": "Create Nullish Coalescing",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createPromise",
+        "title": "Create Promise",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createAsyncAwait",
+        "title": "Create Async / Await",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.extractFunction",
+        "title": "Extract Function",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.extractVariable",
+        "title": "Extract Variable",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.extractConstant",
+        "title": "Extract Constant",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.generateImport",
+        "title": "Generate Import",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.generateType",
+        "title": "Generate Type",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.generateInterface",
+        "title": "Generate Interface",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.generateDocumentation",
+        "title": "Generate Documentation",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.wrapWithTryCatch",
+        "title": "Wrap With Try/Catch",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.wrapWithIf",
+        "title": "Wrap With If",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.wrapWithLoop",
+        "title": "Wrap With Loop",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createReactComponent",
+        "title": "Create React Component",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createReactHook",
+        "title": "Create React Hook",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createUseState",
+        "title": "Create useState",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createUseEffect",
+        "title": "Create useEffect",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createUseMemo",
+        "title": "Create useMemo",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createUseCallback",
+        "title": "Create useCallback",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createUseRef",
+        "title": "Create useRef",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createReactContext",
+        "title": "Create React Context",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createCustomHook",
+        "title": "Create Custom Hook",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createPropsInterface",
+        "title": "Create Props Interface",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createEventHandler",
+        "title": "Create Event Handler",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createJsxElement",
+        "title": "Create JSX Element",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createApiRoute",
+        "title": "Create API Route",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createController",
+        "title": "Create Controller",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createService",
+        "title": "Create Service",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createMiddleware",
+        "title": "Create Middleware",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createRepository",
+        "title": "Create Repository",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createGetEndpoint",
+        "title": "Create GET Endpoint",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createPostEndpoint",
+        "title": "Create POST Endpoint",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createPutEndpoint",
+        "title": "Create PUT Endpoint",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createPatchEndpoint",
+        "title": "Create PATCH Endpoint",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createDeleteEndpoint",
+        "title": "Create DELETE Endpoint",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createApiHandler",
+        "title": "Create API Handler",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createErrorHandler",
+        "title": "Create Error Handler",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createTest",
+        "title": "Create Test",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createTestSuite",
+        "title": "Create Test Suite",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createAssertion",
+        "title": "Create Assertion",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createMock",
+        "title": "Create Mock",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createSpy",
+        "title": "Create Spy",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createBeforeEach",
+        "title": "Create beforeEach",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createAfterEach",
+        "title": "Create afterEach",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createBeforeAll",
+        "title": "Create beforeAll",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.createAfterAll",
+        "title": "Create afterAll",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.generateTest",
+        "title": "Generate Test",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.generateTestData",
+        "title": "Generate Test Data",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.generateMockData",
+        "title": "Generate Mock Data",
+        "category": "CodePilot",
+        "enablement": "codepilot.enabled"
+      },
+      {
+        "command": "codepilot.smartAction",
+        "title": "Smart Action",
+        "category": "CodePilot"
+      },
+      {
+        "command": "codepilot.toggle",
+        "title": "Enable / Disable",
+        "category": "CodePilot"
+      },
+      {
+        "command": "codepilot.showCommands",
+        "title": "Show All Commands",
+        "category": "CodePilot"
+      },
+      {
+        "command": "codepilot.openSettings",
+        "title": "Open Settings",
+        "category": "CodePilot"
+      },
+      {
+        "command": "codepilot.statusMenu",
+        "title": "Status Menu",
+        "category": "CodePilot"
+      },
+      {
+        "command": "codepilot.showOutput",
+        "title": "Show Output Log",
+        "category": "CodePilot"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "codepilot.createFunction",
+        "key": "shift+f1",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createVariable",
+        "key": "shift+f2",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createConstant",
+        "key": "shift+f3",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createClass",
+        "key": "shift+f4",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createInterface",
+        "key": "shift+f5",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages && !inDebugMode"
+      },
+      {
+        "command": "codepilot.createType",
+        "key": "shift+f6",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createEnum",
+        "key": "shift+f7",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createObject",
+        "key": "shift+f8",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createArray",
+        "key": "shift+f9",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createConstructor",
+        "key": "shift+f10",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createMethod",
+        "key": "shift+f11",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages && !inDebugMode"
+      },
+      {
+        "command": "codepilot.createProperty",
+        "key": "shift+f12",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createIfElse",
+        "key": "ctrl+shift+f1",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createSwitch",
+        "key": "ctrl+shift+f2",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createForLoop",
+        "key": "ctrl+shift+f3",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createForOf",
+        "key": "ctrl+shift+f4",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createForIn",
+        "key": "ctrl+shift+f5",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createWhile",
+        "key": "ctrl+shift+f6",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createDoWhile",
+        "key": "ctrl+shift+f7",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createTryCatch",
+        "key": "ctrl+shift+f8",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createTryCatchFinally",
+        "key": "ctrl+shift+f9",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createThrowError",
+        "key": "ctrl+shift+f10",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createReturn",
+        "key": "ctrl+shift+f11",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createTernary",
+        "key": "ctrl+shift+f12",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createImport",
+        "key": "alt+shift+f1",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createNamedImport",
+        "key": "alt+shift+f2",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createDefaultImport",
+        "key": "alt+shift+f3",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createExport",
+        "key": "alt+shift+f4",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createDefaultExport",
+        "key": "alt+shift+f5",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createReExport",
+        "key": "alt+shift+f6",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createDestructuring",
+        "key": "alt+shift+f7",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createSpread",
+        "key": "alt+shift+f8",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createOptionalChaining",
+        "key": "alt+shift+f9",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createNullishCoalescing",
+        "key": "alt+shift+f10",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createPromise",
+        "key": "alt+shift+f11",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createAsyncAwait",
+        "key": "alt+shift+f12",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.extractFunction",
+        "key": "ctrl+alt+shift+e",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.extractVariable",
+        "key": "ctrl+alt+shift+v",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.extractConstant",
+        "key": "ctrl+alt+shift+c",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.generateImport",
+        "key": "ctrl+alt+shift+i",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.generateType",
+        "key": "ctrl+alt+shift+t",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.generateInterface",
+        "key": "ctrl+alt+shift+n",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.generateDocumentation",
+        "key": "ctrl+alt+shift+d",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.wrapWithTryCatch",
+        "key": "ctrl+alt+shift+w",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.wrapWithIf",
+        "key": "ctrl+alt+shift+y",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.wrapWithLoop",
+        "key": "ctrl+alt+shift+l",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createReactComponent",
+        "key": "ctrl+alt+shift+f1",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createReactHook",
+        "key": "ctrl+alt+shift+f2",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createUseState",
+        "key": "ctrl+alt+shift+f3",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createUseEffect",
+        "key": "ctrl+alt+shift+f4",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createUseMemo",
+        "key": "ctrl+alt+shift+f5",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createUseCallback",
+        "key": "ctrl+alt+shift+f6",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createUseRef",
+        "key": "ctrl+alt+shift+f7",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createReactContext",
+        "key": "ctrl+alt+shift+f8",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createCustomHook",
+        "key": "ctrl+alt+shift+f9",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createPropsInterface",
+        "key": "ctrl+alt+shift+f10",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createEventHandler",
+        "key": "ctrl+alt+shift+f11",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createJsxElement",
+        "key": "ctrl+alt+shift+f12",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createApiRoute",
+        "key": "ctrl+alt+f1",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createController",
+        "key": "ctrl+alt+f2",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createService",
+        "key": "ctrl+alt+f3",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createMiddleware",
+        "key": "ctrl+alt+f4",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createRepository",
+        "key": "ctrl+alt+f5",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createGetEndpoint",
+        "key": "ctrl+alt+f6",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createPostEndpoint",
+        "key": "ctrl+alt+f7",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createPutEndpoint",
+        "key": "ctrl+alt+f8",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createPatchEndpoint",
+        "key": "ctrl+alt+f9",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createDeleteEndpoint",
+        "key": "ctrl+alt+f10",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createApiHandler",
+        "key": "ctrl+alt+f11",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createErrorHandler",
+        "key": "ctrl+alt+f12",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createTest",
+        "key": "ctrl+shift+alt+f1",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createTestSuite",
+        "key": "ctrl+shift+alt+f2",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createAssertion",
+        "key": "ctrl+shift+alt+f3",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createMock",
+        "key": "ctrl+shift+alt+f4",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createSpy",
+        "key": "ctrl+shift+alt+f5",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createBeforeEach",
+        "key": "ctrl+shift+alt+f6",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createAfterEach",
+        "key": "ctrl+shift+alt+f7",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createBeforeAll",
+        "key": "ctrl+shift+alt+f8",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.createAfterAll",
+        "key": "ctrl+shift+alt+f9",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.generateTest",
+        "key": "ctrl+shift+alt+f10",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.generateTestData",
+        "key": "ctrl+shift+alt+f11",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.generateMockData",
+        "key": "ctrl+shift+alt+f12",
+        "when": "editorTextFocus && !editorReadonly && codepilot.enabled && editorLangId in codepilot.supportedLanguages"
+      },
+      {
+        "command": "codepilot.smartAction",
+        "key": "ctrl+shift+space",
+        "when": "editorTextFocus && codepilot.enabled"
+      }
+    ],
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "codepilot.createFunction",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createVariable",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createConstant",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createClass",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createInterface",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createType",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createEnum",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createObject",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createArray",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createConstructor",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createMethod",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createProperty",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createIfElse",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createSwitch",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createForLoop",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createForOf",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createForIn",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createWhile",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createDoWhile",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createTryCatch",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createTryCatchFinally",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createThrowError",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createReturn",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createTernary",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createImport",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createNamedImport",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createDefaultImport",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createExport",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createDefaultExport",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createReExport",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createDestructuring",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createSpread",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createOptionalChaining",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createNullishCoalescing",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createPromise",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createAsyncAwait",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.extractFunction",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.extractVariable",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.extractConstant",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.generateImport",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.generateType",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.generateInterface",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.generateDocumentation",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.wrapWithTryCatch",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.wrapWithIf",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.wrapWithLoop",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createReactComponent",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createReactHook",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createUseState",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createUseEffect",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createUseMemo",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createUseCallback",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createUseRef",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createReactContext",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createCustomHook",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createPropsInterface",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createEventHandler",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createJsxElement",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createApiRoute",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createController",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createService",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createMiddleware",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createRepository",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createGetEndpoint",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createPostEndpoint",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createPutEndpoint",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createPatchEndpoint",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createDeleteEndpoint",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createApiHandler",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createErrorHandler",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createTest",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createTestSuite",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createAssertion",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createMock",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createSpy",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createBeforeEach",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createAfterEach",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createBeforeAll",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.createAfterAll",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.generateTest",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.generateTestData",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.generateMockData",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        },
+        {
+          "command": "codepilot.smartAction",
+          "when": "editorLangId in codepilot.supportedLanguages"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "CodePilot",
+      "properties": {
+        "codepilot.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable or disable all CodePilot commands and keybindings."
+        },
+        "codepilot.smartMode": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the Smart Action command (context-aware action picker)."
+        },
+        "codepilot.react.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the React command group."
+        },
+        "codepilot.backend.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the backend (API/controller/service) command group."
+        },
+        "codepilot.testing.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the testing command group."
+        },
+        "codepilot.refactoring.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable the refactoring command group."
+        },
+        "codepilot.formatAfterGeneration": {
+          "type": "boolean",
+          "default": true,
+          "description": "Run the document range formatter over code changed by transformations (not applied while a snippet with tab stops is active)."
+        },
+        "codepilot.showNotifications": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show informational notifications after successful commands."
+        },
+        "codepilot.logLevel": {
+          "type": "string",
+          "enum": [
+            "off",
+            "error",
+            "info",
+            "debug"
+          ],
+          "default": "info",
+          "description": "Verbosity of the CodePilot output channel."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "bundle": "node scripts/bundle.js",
+    "bundle:watch": "node scripts/bundle.js --watch",
+    "lint": "eslint src tests scripts",
+    "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\" \"scripts/**/*.js\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"tests/**/*.ts\" \"scripts/**/*.js\"",
+    "test": "npm run compile && mocha",
+    "sync-manifest": "npm run compile && node scripts/sync-manifest.js",
+    "vscode:prepublish": "npm run bundle",
+    "package": "npm run compile && npm run lint && npm test && npm run bundle && node scripts/smoke-test.js && vsce package --no-dependencies",
+    "clean": "rm -rf out dist *.vsix",
+    "smoke": "npm run bundle && node scripts/smoke-test.js",
+    "check-manifest": "npm run compile && node scripts/sync-manifest.js --check"
+  },
+  "dependencies": {
+    "typescript": "^5.6.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^20.17.10",
+    "@types/vscode": "^1.85.0",
+    "@vscode/vsce": "^3.2.1",
+    "esbuild": "^0.24.2",
+    "eslint": "^9.17.0",
+    "mocha": "^11.0.1",
+    "prettier": "^3.4.2",
+    "typescript-eslint": "^8.18.2"
+  }
+}
