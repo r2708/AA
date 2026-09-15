@@ -5,13 +5,12 @@
   "version": "0.1.0",
   "publisher": "codepilot-dev",
   "license": "MIT",
-  "private": true,
   "repository": {
     "type": "git",
-    "url": "https://github.com/your-org/codepilot.git"
+    "url": "https://github.com/r2708/AA.git"
   },
   "bugs": {
-    "url": "https://github.com/your-org/codepilot/issues"
+    "url": "https://github.com/r2708/AA/issues"
   },
   "engines": {
     "vscode": "^1.85.0",
